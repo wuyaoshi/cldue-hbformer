@@ -1,0 +1,40 @@
+{
+  "project": "HBFormer",
+  "purpose": "Persist resumable session state for Claude-assisted HBFormer research",
+  "updated_at": "2026-04-05",
+  "server": {
+    "name": "autodl3080TI",
+    "ssh": "ssh -p 50162 root@connect.westb.seetacloud.com",
+    "workdir": "/root/HBFormer"
+  },
+  "local": {
+    "mirror": "/home/dawn/文档/HBFormer",
+    "state_repo": "/home/dawn/文档/cldue-hbformer"
+  },
+  "artifacts": {
+    "output_dir": "/root/HBFormer/outputs/hbformer_base",
+    "best_checkpoint": "/root/HBFormer/outputs/hbformer_base/checkpoints/best_model.pt",
+    "latest_checkpoint": "/root/HBFormer/outputs/hbformer_base/checkpoints/checkpoint_latest.pt"
+  },
+  "train": {
+    "status": "completed",
+    "epochs": 200,
+    "best_dice": 0.9274
+  },
+  "test": {
+    "avg_mdice": 0.8573,
+    "avg_miou": 0.7948,
+    "datasets": {
+      "Kvasir": 0.9130,
+      "CVC-ClinicDB": 0.9170,
+      "CVC-ColonDB": 0.7803,
+      "ETIS-LaribPolypDB": 0.8043,
+      "CVC-300": 0.8717
+    }
+  },
+  "current_baseline": {
+    "config": "configs/experiments/hbformer_base.yaml",
+    "num_iterations": 2
+  },
+  "next_action": "Create a separate 3-iteration experiment config and compare against the current 2-iteration baseline"
+}
