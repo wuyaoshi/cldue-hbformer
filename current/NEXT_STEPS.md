@@ -1,7 +1,8 @@
 # Next Steps
 
-- [ ] Keep the current 2-iteration HBFormer setup as the baseline.
-- [ ] Add a separate 3-iteration experiment config instead of overwriting the baseline config.
-- [ ] Run the 3-iteration experiment and compare training/test metrics against the current baseline.
-- [ ] Investigate why `CVC-ColonDB` underperforms relative to Kvasir and CVC-ClinicDB.
-- [ ] Export the current test results into a clean markdown comparison table if needed.
+- [ ] Draft a new standalone Chapter 4 markdown document for the thesis.
+- [ ] Use the displayed model name `HBFormer` in the chapter text and tables.
+- [ ] Use the quantitative results from the HBFormer 3-iteration experiment as the adopted chapter results.
+- [ ] Do not modify `/home/dawn/文档/非全日制硕士学位论文.docx` yet.
+- [ ] Later decide whether to explicitly note in the chapter that the adopted HBFormer result comes from the 3-iteration setting.
+- [ ] Consider adding a fair same-backbone BoundFormer comparison in later experiments if needed.

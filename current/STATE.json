@@ -1,40 +1,69 @@
 {
   "project": "HBFormer",
-  "purpose": "Persist resumable session state for Claude-assisted HBFormer research",
-  "updated_at": "2026-04-05",
-  "server": {
-    "name": "autodl3080TI",
-    "ssh": "ssh -p 50162 root@connect.westb.seetacloud.com",
-    "workdir": "/root/HBFormer"
-  },
+  "purpose": "Persist resumable session state for Claude-assisted HBFormer research and thesis chapter writing",
+  "updated_at": "2026-04-07",
+  "servers": [
+    {
+      "name": "autodl3080TI",
+      "ssh": "ssh -p 50162 root@connect.westb.seetacloud.com",
+      "role": "earlier training and inspection"
+    },
+    {
+      "name": "autodl-clone",
+      "ssh": "ssh -p 49298 root@connect.westb.seetacloud.com",
+      "role": "cloned machine used for final 3-iteration test"
+    }
+  ],
   "local": {
     "mirror": "/home/dawn/文档/HBFormer",
-    "state_repo": "/home/dawn/文档/cldue-hbformer"
+    "state_repo": "/home/dawn/文档/cldue-hbformer",
+    "thesis_docx": "/home/dawn/文档/非全日制硕士学位论文.docx"
   },
-  "artifacts": {
+  "adopted_chapter_model_name": "HBFormer",
+  "adopted_chapter_result_source": "HBFormer 3-iteration experiment",
+  "hbformer_2iter": {
+    "config": "configs/experiments/hbformer_base.yaml",
     "output_dir": "/root/HBFormer/outputs/hbformer_base",
-    "best_checkpoint": "/root/HBFormer/outputs/hbformer_base/checkpoints/best_model.pt",
-    "latest_checkpoint": "/root/HBFormer/outputs/hbformer_base/checkpoints/checkpoint_latest.pt"
-  },
-  "train": {
-    "status": "completed",
-    "epochs": 200,
-    "best_dice": 0.9274
-  },
-  "test": {
-    "avg_mdice": 0.8573,
-    "avg_miou": 0.7948,
-    "datasets": {
-      "Kvasir": 0.9130,
-      "CVC-ClinicDB": 0.9170,
-      "CVC-ColonDB": 0.7803,
-      "ETIS-LaribPolypDB": 0.8043,
-      "CVC-300": 0.8717
+    "best_dice": 0.9274,
+    "test": {
+      "avg_mdice": 0.8573,
+      "avg_miou": 0.7948,
+      "datasets": {
+        "Kvasir": 0.9130,
+        "CVC-ClinicDB": 0.9170,
+        "CVC-ColonDB": 0.7803,
+        "ETIS-LaribPolypDB": 0.8043,
+        "CVC-300": 0.8717
+      }
     }
   },
-  "current_baseline": {
-    "config": "configs/experiments/hbformer_base.yaml",
-    "num_iterations": 2
+  "hbformer_adopted": {
+    "config": "configs/experiments/hbformer_3iter.yaml",
+    "output_dir": "/root/HBFormer/outputs/hbformer_3iter",
+    "best_dice": 0.9220,
+    "test": {
+      "avg_mdice": 0.8623,
+      "avg_miou": 0.7967,
+      "datasets": {
+        "Kvasir": 0.9173,
+        "CVC-ClinicDB": 0.9206,
+        "CVC-ColonDB": 0.7960,
+        "ETIS-LaribPolypDB": 0.7876,
+        "CVC-300": 0.8899
+      }
+    }
   },
-  "next_action": "Create a separate 3-iteration experiment config and compare against the current 2-iteration baseline"
+  "boundformer_reference": {
+    "source": "/home/dawn/文档/BoundFormer/outputs/boundformer_small_b4/test.log",
+    "avg_mdice": 0.8667,
+    "avg_miou": 0.8051,
+    "datasets": {
+      "Kvasir": 0.9297,
+      "CVC-ClinicDB": 0.9141,
+      "CVC-ColonDB": 0.7865,
+      "ETIS-LaribPolypDB": 0.8019,
+      "CVC-300": 0.9013
+    }
+  },
+  "next_action": "Draft a new standalone Chapter 4 document for the thesis using the model name HBFormer and the adopted 3-iteration results"
 }
